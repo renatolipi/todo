@@ -5,13 +5,9 @@ services:
     container_name: elasticsearch_lb
     image: lorenz/elasticsearch:1.4
     volumes:
-      - type: volume
-        source: /var/r3_es_data
-        target: /data
+      - /var/r3_es_data:/data
     ports:
       - "9201:9200"
-    networks:
-      - todo_net
     environment: 
       - CLUSTER_NAME=elasticsearch
       - NODE_DATA=true
